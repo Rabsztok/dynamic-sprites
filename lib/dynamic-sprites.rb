@@ -2,7 +2,7 @@ module DynamicSprites
 
   #----------------------------------------------------------------------------
 
-  VERSION     = "0.0.1"
+  VERSION     = "0.0.2"
   SUMMARY     = "Dynamic sprites mixin in SASS with sprite generator"
   DESCRIPTION = "Generates sass mixin and combines directory of images into one sprite"
 
