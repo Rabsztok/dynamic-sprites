@@ -70,7 +70,7 @@ See [LICENSE](https://github.com/Rabsztok/dynamic-sprites/blob/master/LICENSE) f
 Credits
 =======
 
-Thanks to [jakesgordon](https://github.com/jakesgordon) who created awesome gem [sprites_factory](https://github.com/jakesgordon/sprite-factory) which inspired me and provided tons of great ideas during development.
+Thanks to [jakesgordon](https://github.com/jakesgordon) who created awesome gem [sprite-factory](https://github.com/jakesgordon/sprite-factory) which inspired me and provided tons of great ideas during development.
 Also big thanks to my employer, [GrowthRepublic](http://growthrepublic.com) for encouraging me to release this library as open source.
 
 Contact
