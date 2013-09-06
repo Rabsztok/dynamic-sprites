@@ -1,0 +1,42 @@
+// Generates sass code for responsive sprites.
+//
+// sprite_url  - String containing url to sprite image.
+// images - Collection of strings, which represents images from sprites, each of them will generate separate class. Order must be preserved as in sprite
+// image_height - Percentage height of image within sprite, (100% / ($number_of_images - 1))
+// width - Element width
+// padding_bottom - Padding bottom replaces height in its functionality.
+//
+// Examples
+//
+//   .social img
+//     dynamic-sprite('/images/social.png', ('facebook', 'linkedin'))
+//
+// Returns sass for element and it's subclasses, for each image in sprite respectively.
+@mixin dynamic-sprite($sprite_url, $images: (), $image_height : 100%, $width: 100%, $padding_bottom: 100%)
+  padding-bottom: $padding_bottom
+  width: $width
+  height: 0
+  background-repeat: no-repeat
+  background-image: url($sprite_url)
+  background-size: 100%
+
+  @for $i from 1 through length($images)
+    $image: nth($images, $i)
+
+    &.#{$image}
+      background-position: 0 $image_height * ($i - 1)
+
+// Generates sass code for horizontal responsive sprites, everything works similar to vertical version.
+@mixin dynamic-sprite-horizontal($sprite_url, $images: (), $image_width : 100%, $width: 100%, $padding_bottom: 100%)
+  padding-bottom: $padding_bottom
+  width: $width
+  height: 0
+  background-repeat: no-repeat
+  background-image: url($sprite_url)
+  background-size: 100% * length($images)
+
+  @for $i from 1 through length($images)
+    $image: nth($images, $i)
+
+    &.#{$image}
+      background-position: $image_width * ($i - 1) 0
