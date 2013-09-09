@@ -1,4 +1,4 @@
-dynamic-sprites [![Code Climate](https://codeclimate.com/github/Rabsztok/dynamic-sprites.png)](https://codeclimate.com/github/Rabsztok/dynamic-sprites) [![Dependency Status](https://gemnasium.com/Rabsztok/dynamic-sprites.png)](https://gemnasium.com/Rabsztok/dynamic-sprites)
+dynamic-sprites [![Code Climate](https://codeclimate.com/github/Rabsztok/dynamic-sprites.png)](https://codeclimate.com/github/Rabsztok/dynamic-sprites) [![Dependency Status](https://gemnasium.com/Rabsztok/dynamic-sprites.png)](https://gemnasium.com/Rabsztok/dynamic-sprites) [![Gem Version](https://badge.fury.io/rb/dynamic-sprites.png)](http://badge.fury.io/rb/dynamic-sprites)
 ===============
 
 Dynamic Sprites is a ruby gem which helps managing your [responsive sprites](http://blog.growthrepublic.com/2013/08/30/responsive-sprites-using-sass/).
