@@ -61,13 +61,86 @@
 
     <iframe id="search_frame"></iframe>
 
-    <div id="content"><div id='filecontents'><h1>dynamic-sprites</h1>
+    <div id="content"><div id='filecontents'><h1>dynamic-sprites <a href="https://codeclimate.com/github/Rabsztok/dynamic-sprites"><img src="https://codeclimate.com/github/Rabsztok/dynamic-sprites.png" alt="Code Climate"></a> <a href="https://gemnasium.com/Rabsztok/dynamic-sprites"><img src="https://gemnasium.com/Rabsztok/dynamic-sprites.png" alt="Dependency Status"></a> <a href="http://badge.fury.io/rb/dynamic-sprites"><img src="https://badge.fury.io/rb/dynamic-sprites.png" alt="Gem Version"></a></h1>
 
-<p>Dynamic sprites mixin in SASS with rake based sprite generator.</p>
+<p>Dynamic Sprites is a ruby gem which helps managing your <a href="http://blog.growthrepublic.com/2013/08/30/responsive-sprites-using-sass/">responsive sprites</a>.
+On initialization, it creates sass mixin, which will generate for you all of the necessary styles needed for handling your sprite image.
+It has also a generator for your own sprite images. Its functionality is explained below.</p>
+
+<h1>Installation</h1>
+
+<pre class="code ruby"><code class="ruby"></code></pre>
+
+<p>When gem is installed, you have to run &#39;init&#39; command which will generate sass mixin (optionally, you could append path to where it should be placed as a second argument):</p>
+
+<pre class="code ruby"><code class="ruby"></code></pre>
+
+<p>An image library is also required. DynamicSprites comes with built in support for
+<a href="http://rmagick.rubyforge.org/">RMagick</a>.</p>
+
+<p>RMagick is the most common image libary to use, installation instructions for ubuntu:</p>
+
+<pre class="code ruby"><code class="ruby"></code></pre>
+
+<h1>Usage</h1>
+
+<p>Use the <code>dynamic-sprites generate</code> command line script specifying the location of your images.</p>
+
+<pre class="code ruby"><code class="ruby"></code></pre>
+
+<p>This will combine the individual image files within that directory and generate sprite containing all of images placed in that directory</p>
+
+<p>You can also use the DynamicSprites directly from your own code:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>dynamic-sprites</span><span class='tstring_end'>&#39;</span></span>
+
+<span class='const'>DynamicSprites</span><span class='period'>.</span><span class='id identifier rubyid_run!'>run!</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>generate</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>images/icons</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+</code></pre>
+
+<h1>Customization</h1>
+
+<p>You can provide these options to customize generation process:</p>
+
+<ul>
+<li><code>:layout</code>       - specify layout algorithm - how images should be combined (horizontal or vertical)</li>
+<li><code>:output</code>       - specify output location for generated image (default: <input folder>.png)</li>
+<li><code>:selector</code>     - specify selector for created sprite (default: img.sprite)</li>
+</ul>
+
+<p>Options can be passed as command line arguments to the <code>dynamic-sprites</code> script:</p>
+
+<pre class="code ruby"><code class="ruby"></code></pre>
+
+<p>Options can also be passed as the 2nd argument to the <code>#run!</code> method:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='const'>DynamicSprites</span><span class='period'>.</span><span class='id identifier rubyid_run!'>run!</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>generate</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>images/icons</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>output:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>sass/dynamic-sprites.png</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>layout:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>horizontal</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+</code></pre>
+
+<h1>ToDo</h1>
+
+<p>There is plenty of work to do here, share with me your feedback or make some pull requests if you like it.</p>
+
+<pre class="code ruby"><code class="ruby">* Create solid validation for input options, currently when you pass an invalid option you will get normal ruby error instead of nice looking message.
+* Create good Unit Tests to cover all of provided functionality. Currently there are only integration tests for core functions.
+</code></pre>
+
+<h1>License</h1>
+
+<p>See <a href="https://github.com/Rabsztok/dynamic-sprites/blob/master/LICENSE">LICENSE</a> file.</p>
+
+<h1>Credits</h1>
+
+<p>Thanks to <a href="https://github.com/jakesgordon">jakesgordon</a> who created awesome gem <a href="https://github.com/jakesgordon/sprite-factory">sprite-factory</a> which inspired me and provided tons of great ideas during development.
+Also big thanks to my employer, <a href="http://growthrepublic.com">GrowthRepublic</a> for encouraging me to release this library as open source.</p>
+
+<h1>Contact</h1>
+
+<p>If you have any ideas, feedback, requests or bug reports, you can reach me at
+<a href="mailto:rabsztok@gmail.com">rabsztok@gmail.com</a>.</p>
 </div></div>
 
     <div id="footer">
-  Generated on Fri Sep  6 12:21:56 2013 by
+  Generated on Mon Sep  9 14:31:42 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7 (ruby-2.0.0).
 </div>
