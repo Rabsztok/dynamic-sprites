@@ -60,7 +60,6 @@ module DynamicSprites
     #
     def sass_directories
       style_directories = []
-
       Find.find(Dir.pwd) do |path|
         next unless FileTest.directory?(path)
         if File.basename(path).match /sass|style/

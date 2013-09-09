@@ -1,5 +1,6 @@
 module DynamicSprites
   # Generates sprites
+  #
   class Generator
 
     # Array of file extensions used for creating sprites.
@@ -38,6 +39,7 @@ module DynamicSprites
     end
 
     # Returns a call to sass mixin function with default attributes
+    #
     def mixin_call
       call = "dynamic-sprite"
       call << "-horizontal" if @layout == "horizontal"
