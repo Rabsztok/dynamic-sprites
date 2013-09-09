@@ -2,8 +2,8 @@ module DynamicSprites
 
   #----------------------------------------------------------------------------
 
-  VERSION     = "0.0.2"
-  SUMMARY     = "Dynamic sprites mixin in SASS with sprite generator"
+  VERSION     = "0.0.3"
+  SUMMARY     = "Responsive sprites - SASS mixin and sprite generator"
   DESCRIPTION = "Generates sass mixin and combines directory of images into one sprite"
 
   require 'find'
