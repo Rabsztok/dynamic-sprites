@@ -38,8 +38,9 @@ module DynamicSprites
     # Generates sprite using provided options.
     #
     def generate_sprite!
-      Generator.new(options[:output], path, options[:layout]).run!
-      interface.generate_sprite_summary(@options[:output])
+      generator = Generator.new(options[:output], path, options[:layout])
+      generator.run!
+      interface.generate_sprite_summary(@options[:output], generator.mixin_call)
     end
 
     # Chooses one of possible options of defining sass directory path.

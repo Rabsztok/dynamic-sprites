@@ -3,3 +3,6 @@
 .yardoc
 /coverage
 /doc
+
+# test temps
+/test/temporary/*

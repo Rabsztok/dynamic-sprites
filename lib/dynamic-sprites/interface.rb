@@ -29,8 +29,10 @@ module DynamicSprites
       puts "Mixin generated in #{path}"
     end
 
-    def generate_sprite_summary(path)
+    def generate_sprite_summary(path, mixin_call)
       puts "Sprite generated in #{path}"
+      puts "\nYou can use it by calling this code in your sass document:"
+      puts mixin_call
     end
 
     private
