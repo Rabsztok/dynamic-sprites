@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'dynamic-sprites'
-  s.version     = '0.0.3'
+  s.version     = '0.0.5'
   s.executables << 'dynamic-sprites'
   s.date        = '2013-09-09'
   s.summary     = "Responsive sprites - SASS mixin and sprite generator"
@@ -10,4 +10,5 @@ Gem::Specification.new do |s|
   s.files       = ["lib/dynamic-sprites.rb", "lib/dynamic-sprites/runner.rb", "lib/dynamic-sprites/generator.rb", "lib/dynamic-sprites/interface.rb", "dynamic-sprites.sass"]
   s.homepage    = 'https://github.com/Rabsztok/dynamic-sprites'
   s.license     = 'GPL'
+  s.add_dependency "rmagick"
 end

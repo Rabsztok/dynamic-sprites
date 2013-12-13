@@ -38,7 +38,7 @@ module DynamicSprites
     # Generates sprite using provided options.
     #
     def generate_sprite!
-      generator = Generator.new(options[:output], path, options[:layout])
+      generator = Generator.new(options[:output], path, options[:layout], options[:geometry])
       generator.run!
       interface.generate_sprite_summary(@options[:output], generator.mixin_call)
     end
@@ -62,7 +62,7 @@ module DynamicSprites
       style_directories = []
       Find.find(Dir.pwd) do |path|
         next unless FileTest.directory?(path)
-        if File.basename(path).match /sass|style/
+        if File.basename(path).match(/sass|style/)
           style_directories << Pathname.new(path)
         elsif File.basename(path)[0] == ?.
           Find.prune

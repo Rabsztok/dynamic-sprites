@@ -2,12 +2,13 @@ module DynamicSprites
 
   #----------------------------------------------------------------------------
 
-  VERSION     = "0.0.3"
+  VERSION     = "0.0.5"
   SUMMARY     = "Responsive sprites - SASS mixin and sprite generator"
   DESCRIPTION = "Generates sass mixin and combines directory of images into one sprite"
 
   require 'find'
-  require 'rmagick'
+  require 'pathname'
+  require 'RMagick'
 
   require_relative 'dynamic-sprites/runner'  # Controller of this module
   require_relative 'dynamic-sprites/interface'  # User interaction methods

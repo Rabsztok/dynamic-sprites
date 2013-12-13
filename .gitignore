@@ -6,3 +6,5 @@
 
 # test temps
 /test/temporary/*
+
+*.gem

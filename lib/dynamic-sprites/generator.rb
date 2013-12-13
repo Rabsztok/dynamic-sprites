@@ -13,74 +13,60 @@ module DynamicSprites
     # path - Pathname of directory containing source images.
     # layout - sprite layout name as a String
     #
-    def initialize(filename, path, layout)
+    def initialize(filename, path, layout, geometry)
       @filename = filename
       @layout = layout
       @files = Dir.glob(File.join(path, '*')).sort.select { |e| VALID_EXTENSIONS.include?(File.extname(e)) }
-      @images = load(@files)
-      @canvas = canvas
+      @images = Magick::ImageList.new(*@files)
+      @geometry = Magick::Geometry.from_s(geometry) rescue default_geometry
     end
 
     # Main method for sprites generation
     #
     def run!
-      @canvas.opacity = Magick::MaxRGB
-      offset_x = 0
-      offset_y = 0
-      @images.each do |image|
-        @canvas.composite!(image[:image], offset_x, offset_y, Magick::SrcOverCompositeOp)
-        if @layout == 'horizontal'
-          offset_x += image[:width]
-        else
-          offset_y += image[:height]
-        end
-      end
-      @canvas.write(@filename)
+      # @canvas.opacity = Magick::MaxRGB
+      geometry = @geometry
+      tile = grid
+      @images.montage do |c|
+        c.geometry = geometry if geometry
+        c.background_color = 'transparent'
+        c.tile = tile
+      end.write(@filename)
     end
 
     # Returns a call to sass mixin function with default attributes
     #
     def mixin_call
-      call = "dynamic-sprite"
+      call = "img.sprite\n  @include dynamic-sprite"
       call << "-horizontal" if @layout == "horizontal"
       arguments = [
-        @filename,
-        @files.map{ |f| File.basename(f) },
-        "#{100 / (@files.size - 1)}%",
+        @filename.inspect,
+        classess,
+        "#{100.0 / (@images.length - 1)}%",
         "100%",
-        "#{100 * @images.first[:height] / @images.first[:width]}%"
+        "#{100.0 * @geometry.height / @geometry.width}%"
       ]
       call << "(#{arguments.join(', ')})"
     end
 
     private
 
-    # Converts Array of Filenames into an Array of Magic::Image objects
-    #
-    def load(files)
-      files.map do |filename|
-        image = Magick::Image.read(filename)[0]
-        {
-          :image    => image,
-          :width    => image.columns,
-          :height   => image.rows
-        }
+    def grid
+      if @layout == 'horizontal'
+        Magick::Geometry.new(@images.length, 1)
+      else
+        Magick::Geometry.new(1, @images.length)
       end
     end
 
-    # Returns canvas on which images will be sequentially placed
+    # Changes array of files into String containing classes derived from file names.
     #
-    def canvas
-      images_width = @images.map{ |i| i[:width] }
-      images_height = @images.map{ |i| i[:height] }
-      if @layout == 'horizontal'
-        width = images_width.reduce(:+)
-        height = images_height.max
-      else
-        height = images_height.reduce(:+)
-        width = images_width.max
-      end
-      Magick::Image.new(width, height)
+    def classess
+      '(' + @files.map{ |f| File.basename(f).split('.').first.inspect }.join(', ') + ')'
+    end
+
+    def default_geometry
+      Magick::Geometry.new(@images.first.columns, @images.first.rows)
     end
   end
 end
